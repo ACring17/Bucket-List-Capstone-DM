@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+
+/* Body Styling */
+
+#bucket-body {
+    background-color: #90bede;
+}
+
+#achieved-body {
+    background-color: #9fc490;
+}
+
+
+/* Header Styling */
+
+#bucket-header {
+    background-color: #335c81;
+    color: white;
+    font-family: 'Playfair Display', serif;
+}
+
+#achieved-header {
+    background-color: #1b512d;
+    color: white;
+    font-family: 'Playfair Display', serif;
+}
+
+h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 64px;
+    padding: 10px 0px;
+}
+
+h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    font-family: 'Libre Franklin', sans-serif;
+}
+
+
+/* Navigation Styles */
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav img {
+    width: 105px;
+    height: 110px;
+    padding: 30px 10px;
+}
+
+nav img:hover {
+    transition: all .4s ease-in-out;
+    -webkit-transform: scale(1.3);
+    -ms-transform: scale(1.3);
+    transform: scale(1.3);
+}
+
+
+/* Form styling */
+
+form {
+    font-family: 'Libre Franklin', sans-serif;
+    font-weight: 700;
+}
+
+#inputForm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+#addBucket {
+    width: 400px;
+    padding-left: 5px;
+}
+
+#submitBtn {
+    width: 150px;
+    background-color: #335c81;
+    color: white;
+}
+
+#submitBtn:hover {
+    background-color: #AED6F1;
+    color: #335c81;
+    border: black solid 1px;
+}
