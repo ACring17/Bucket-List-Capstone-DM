@@ -98,7 +98,5 @@ form {
 }
 
 #submitBtn:hover {
-    background-color: #AED6F1;
-    color: #335c81;
-    border: black solid 1px;
+    background-color: black;
 }
