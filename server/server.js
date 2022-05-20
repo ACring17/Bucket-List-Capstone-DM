@@ -15,4 +15,6 @@ app.get("/api/achievementList", (req, res) => {
         res.status(200).send(usersAchievementList);
 
 });
+
+
 app.listen(4040, () => console.log('Server running on 4040'))

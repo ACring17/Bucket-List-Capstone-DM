@@ -17,14 +17,11 @@ async function getCharacters() {
 function renderBucketList() {
     const bucketListContainer = document.getElementById('#bucket-list-container');
 
-    for (const character of characters) {
+    for (const items of items) {
         const li = document.createElement('li');
         li.addEventListener('dblclick', () => {
             const nameInput = document.getElementsByName('name')[0];
-            const levelInput = document.getElementsByName('level')[0];
-            const methodInput = document.getElementsByName('_method')[0];
-            const idInput = document.getElementsByName('id')[0];
-            const button = document.getElementsByName('submit')[0];
+
 
             nameInput.value = character.name;
             levelInput.value = character.level;
