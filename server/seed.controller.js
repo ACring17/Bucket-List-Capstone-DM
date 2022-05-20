@@ -3,9 +3,8 @@ const sequelize = require('../utils/db');
 async function createDatabaseSchema(req, res) {
     try {
         await sequelize.query(`
-    drop table if exists users;
-    drop table if exists characters;
-    create table Bucket List (
+    drop table if exists Bucket_List;
+    create table Bucket_List (
       id integer primary key,
       Value text,
       is_achieved boolean,

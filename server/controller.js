@@ -5,17 +5,11 @@ async function getBucketList(req, res) {
 
     try {
         const [result] = await sequelize.query(`
-        select * from characters where user_id = ${userID}
+        select * from bucketListItems where user_id = ${userID}
       `);
 
         res.status(200).send(result);
     } catch (error) {
-        const user = req.session.user; // This information is here because I added to the session in my auth.controller.js
-
-        rollbar.error(error, {
-            user: user,
-        });
-
         res.sendStatus(500);
     }
 }
@@ -42,5 +36,5 @@ async function handleListMutations(req, res) {
 
 module.exports = {
     getBucketList,
-    createList: handlelistMutations,
+    createList: handleListMutations,
 };
