@@ -1,0 +1,23 @@
+{
+  "name": "capstone-foundations",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ACring17/Bucket-List-Capstone-DM.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ACring17/Bucket-List-Capstone-DM/issues"
+  },
+  "homepage": "https://github.com/ACring17/Bucket-List-Capstone-DM#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
