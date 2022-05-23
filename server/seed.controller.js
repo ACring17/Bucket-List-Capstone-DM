@@ -1,4 +1,4 @@
-const sequelize = require('../utils/db');
+const sequelize = require('../server/db');
 
 async function createDatabaseSchema(req, res) {
     try {
