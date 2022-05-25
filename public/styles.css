@@ -101,3 +101,26 @@ form {
 #submitBtn:hover {
     background-color: black;
 }
+
+button {
+    width: 100px;
+    height: 50px;
+    font-family: 'Libre Franklin', sans-serif;
+    font-weight: 700;
+    border: solid 1px black;
+    background-color: white;
+}
+
+#acheived {
+    background-color: #9fc490;
+    border: solid 1px black;
+}
+
+button:hover {
+    background-color: black;
+    color: white;
+}
+
+#acheived:hover {
+    background-color: #1b512d;
+}

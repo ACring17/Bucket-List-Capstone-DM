@@ -4,6 +4,8 @@ const addBucket = document.getElementById("#addBucket")
 
 // Code to hide buttons until list items are added
 
+// code to have the buttons appear for each list item
+
 // code to move list items from bucket list to achieved list
 
 // document.getElementById("complimentButton").onclick = function() {
