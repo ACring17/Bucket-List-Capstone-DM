@@ -37,7 +37,7 @@ app.post("api/achievementList", (req, res) => {
     // Code to move from bucket list to acheivement list
     const achievementListGoals = req.body;
     bucketListTable.push(achievementListGoals);
-    res.status(200).send(bucketListTable)
+    res.status(200).send(bucketListTable.achievementListGoals)
         // Does this work as I intend it to?
 })
 
