@@ -1,3 +1,5 @@
+const PORT = 4040;
+
 const express = require('express')
 
 const app = express()
@@ -24,7 +26,7 @@ app.get("/api/achievementList", (req, res) => {
 // Post API methods
 app.post("api/bucketList", (req, res) => {
     // Code to post goals to bucket list
-    const bucketListGoals = req.body;
+    const { bucketListGoals } = req.body;
     if (!bucketListGoals) {
         res.status(400).send("Looks like you forgot to type in a goal. What would you like to acheieve?")
     } else {
@@ -60,6 +62,6 @@ app.delete("api/achevementList", (req, res) => {
 
 })
 
-app.listen(4040, () => console.log('Server running on 4040'))
+app.listen(PORT, () => console.log(`Server running on ${PORT}`))
 
 // For id login look at backend video 1 at 1:45 mark

@@ -1,5 +1,3 @@
-const { createElement } = require("react/cjs/react.production.min")
-
 // Post methods
 document.getElementById('submitBtn').onclick = function(event) {
     event.preventDefault()
