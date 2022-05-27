@@ -13,7 +13,7 @@ document.getElementById('submitBtn').onclick = function(event) {
 
 
 // Code to display lists-Get requests
-document.getElementById("bucket-list").onclick = function() {
+document.getElementById("bucket-list") = function() {
     axios.get("http://localhost:4040/api/bucketList/")
         .then(function(response) {
             const data = response.data;
@@ -23,13 +23,34 @@ document.getElementById("bucket-list").onclick = function() {
         });
 };
 
-document.getElementById("achievement-list").onclick = function() {
+document.getElementById("achievement-list") = function() {
     axios.get("http://localhost:4040/api/achievementList/")
         .then(function(response) {
             const data = response.data;
             const listItems = document.createElement("ul");
             data.appendChild(listItems);
             document.body.append("achievment-list");
+        });
+};
+
+// Put methods - need to make adjustments so that these work. Basic structure for now
+document.getElementById("edit").onclick = function() {
+    axios.put("http://localhost:4040/api/bucketList/")
+        .then(function(response) {
+            const data = response.data;
+            const listItems = document.createElement("ul");
+            data.appendChild(listItems);
+            document.body.append("bucket-list");
+        });
+};
+
+document.getElementById("edit").onclick = function() {
+    axios.put("http://localhost:4040/api/achievementList/")
+        .then(function(response) {
+            const data = response.data;
+            const listItems = document.createElement("ul");
+            data.appendChild(listItems);
+            document.body.append("bucket-list");
         });
 };
 
