@@ -51,7 +51,7 @@ document.getElementById("edit").onclick = function() {
             const listItems = document.createElement("ul");
             data.appendChild(listItems);
             document.body.append("bucket-list");
-        });
+        }); //Will need to think of way to move ul item into achievement list
 };
 
 // Delete method
@@ -72,7 +72,13 @@ document.getElementById("delete").onclick = function() {
 };
 
 // Code to hide buttons until list items are added
+// function () = hide element by ID 
+// When ! ID 
+//   Hide element 
+// diplay eleent
 
 // code to have the buttons appear for each list item
+// for each ul element (ul)
+//    display element by (bttn)
 
 // code to move list items from bucket list to achieved list
