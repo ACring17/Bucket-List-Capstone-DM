@@ -54,16 +54,25 @@ document.getElementById("edit").onclick = function() {
         });
 };
 
+// Delete method
+document.getElementById("delete").onclick = function() {
+    axios.delete("http://localhost:4040/api/bucketList/")
+        .then(function(response) {
+            const data = response.data;
+            data.body; //Does not see right. Trying to display updated list after deleting. 
+        });
+};
+
+document.getElementById("delete").onclick = function() {
+    axios.delete("http://localhost:4040/api/achievementList/")
+        .then(function(response) {
+            const data = response.data;
+            data.body; //Does not see right. Trying to display updated list after deleting. 
+        });
+};
+
 // Code to hide buttons until list items are added
 
 // code to have the buttons appear for each list item
 
 // code to move list items from bucket list to achieved list
-
-// document.getElementById("complimentButton").onclick = function() {
-//     axios.get("http://localhost:4000/api/compliment/")
-//         .then(function(response) {
-//             const data = response.data;
-//             alert(data);
-//         });
-// };
