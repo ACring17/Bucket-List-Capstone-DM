@@ -44,22 +44,41 @@ app.post("api/achievementList", (req, res) => {
 })
 
 // PUT API methods
-app.put("api/bucketList", (req, res) => {
+app.put("api/bucketList/:bucketListGoals", (req, res) => {
     // code to edit goals on bucket list
+    let existingBucketList = req.params.bucketListGoals;
+    let newBucketListGoal = req.body.bucketListGoals;
+    bucketListTable.push(newBucketListGoal);
+    bucketListTable.delete(existingBucketList);
+    res.status(200).send(bucketListTable); //
 })
 
-app.put("api/achievementList", (req, res) => {
-    // code to edit achievement list 
+app.put("api/achievementList/:achievementListGoals", (req, res) => {
+    // code to edit achievement list
+    let existingAchievementList = req.params.achievementListGoals;
+    let newAchievementListGoal = req.body.bucketListGoals;
+    bucketListTable.push(newAchievementListGoal);
+    bucketListTable.delete(existingAchievementList);
+    res.status(200).send(bucketListTable); //
 })
 
 // Delete API methods
-app.delete("api/bucketList", (req, res) => {
+app.delete("api/bucketList/:bucketListGoals", (req, res) => {
     // code to delete bucket list goal off list
+    let existingBucketList = req.params.bucketListGoals;
+    let deleteBucketListGoal = req.body.bucketListGoals;
+    bucketListTable.splice(deleteBucketListGoal, 1);
+    bucketListTable.delete(existingBucketList); //Seems redundant
+    res.status(200).send(bucketListTable);
 })
 
-app.delete("api/achevementList", (req, res) => {
+app.delete("api/achevementList/:achievementListGoals", (req, res) => {
     // code to remove achievement off list
-
+    let existingBucketList = req.params.bucketListGoals;
+    let deleteBucketListGoal = req.body.bucketListGoals;
+    bucketListTable.splice(deleteBucketListGoal, 1);
+    bucketListTable.delete(existingBucketList); //Seems redundant
+    res.status(200).send(bucketListTable);
 })
 
 app.listen(PORT, () => console.log(`Server running on ${PORT}`))
