@@ -76,6 +76,7 @@ document.getElementById("delete").onclick = function() {
 // When ! ID 
 //   Hide element 
 // diplay eleent
+document.getElementsByClassName("list-button")
 
 // code to have the buttons appear for each list item
 // for each ul element (ul)
