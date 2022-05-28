@@ -3,12 +3,11 @@ document.getElementById('submitBtn').onclick = function(event) {
     event.preventDefault()
     const addBucket = document.getElementById("addBucket")
     console.log(addBucket.value)
-    const goals = { DataBaseName: addBucket.value }
+    const goals = { DATABASE_URL: addBucket.value }
     axios.post('http://localhost:4040/api/bucketList', goals).then(res => {
-            console.log(res.data)
-        }) //Will need to change DataBaseName to whatever I need to connnect to heroku. Not sure if I need the console.log
+        console.log(res.data)
+    })
 }
-
 
 // Code to display lists-Get requests
 document.getElementById("bucket-list") = function() {
@@ -74,7 +73,7 @@ document.getElementById("delete").onclick = function() {
 // When ! ID 
 //   Hide element 
 // diplay eleent
-document.getElementsByClassName("list-button")
+// document.getElementsByClassName("list-button")
 
 // code to have the buttons appear for each list item
 // for each ul element (ul)
