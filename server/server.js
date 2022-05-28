@@ -1,17 +1,9 @@
 const PORT = 4040;
 require('dotenv').config();
 const express = require('express');
-const Sequelize = require('sequelize');
 
 const app = express()
-const sequelize = new Sequelize(process.env.CONNECTION_STRING, {
-    dialect: 'postgres',
-    dialectOptions: {
-        ssl: {
-            rejectUnauthorized: false
-        }
-    }
-})
+
 
 app.use(express.json());
 
