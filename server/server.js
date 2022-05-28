@@ -1,40 +1,43 @@
 require('dotenv').config();
 const express = require('express');
 const sequelize = require('./db');
-
+const cors = require("cors");
+const { createDatabaseSchema } = require('./seed.controller');
 const app = express()
 
 
 app.use(express.json());
-
-
-// GET API methods
-app.get("/api/bucketList", (req, res) => {
-    const usersBucketList = sequelize.query('select value from Bucket_List');
+app.use(cors());
+app.get("/seed", createDatabaseSchema)
+    // GET API methods
+app.get("/api/bucketList", async(req, res) => {
+    const [usersBucketList] = await sequelize.query('select value from bucket_list');
+    console.log(usersBucketList)
     res.status(200).send(usersBucketList);
 
 });
 
-app.get("/api/achievementList", (req, res) => {
-    const usersAchievementList = sequelize.query('select is_achieved from Bucket_List'); //Need to find out why it doesnt like this query.
+app.get("/api/achievementList", async(req, res) => {
+    const usersAchievementList = await sequelize.query('select is_achieved from bucket_list'); //Need to find out why it doesnt like this query.
+
     res.status(200).send(usersAchievementList);
 
 });
 
 
 // Post API methods
-app.post("api/bucketList", (req, res) => {
+app.post("/api/bucketList", (req, res) => {
     // Code to post goals to bucket list
     const { bucketListGoals } = req.body;
     if (!bucketListGoals) {
         res.status(400).send("Looks like you forgot to type in a goal. What would you like to acheieve?")
     } else {
-        bucketListTable.push(req.body);
-        res.status(200).send(bucketListTable) //Do I need a function to add to db?
+        const usersAchievementList = sequelize.query(`insert into bucket_list (is_achieved, value, user_id) values (false, '${bucketListGoals}', 1)`);
+        res.status(200).send([]) //Do I need a function to add to db?
     }
 })
 
-app.post("api/achievementList", (req, res) => {
+app.post("/api/achievementList", (req, res) => {
     // Code to move from bucket list to acheivement list
     const achievementListGoals = req.body;
     bucketListTable.push(achievementListGoals);
@@ -43,7 +46,7 @@ app.post("api/achievementList", (req, res) => {
 })
 
 // PUT API methods
-app.put("api/bucketList/:bucketListGoals", (req, res) => {
+app.put("/api/bucketList/:bucketListGoals", (req, res) => {
     // code to edit goals on bucket list
     let existingBucketList = req.params.bucketListGoals; //Need to change this so it goes to the DB
     let newBucketListGoal = req.body.bucketListGoals;
@@ -52,7 +55,7 @@ app.put("api/bucketList/:bucketListGoals", (req, res) => {
     res.status(200).send(bucketListTable); //
 })
 
-app.put("api/achievementList/:achievementListGoals", (req, res) => {
+app.put("/api/achievementList/:achievementListGoals", (req, res) => {
     // code to edit achievement list
     let existingAchievementList = req.params.achievementListGoals;
     let newAchievementListGoal = req.body.bucketListGoals;
@@ -62,7 +65,7 @@ app.put("api/achievementList/:achievementListGoals", (req, res) => {
 })
 
 // Delete API methods
-app.delete("api/bucketList/:bucketListGoals", (req, res) => {
+app.delete("/api/bucketList/:bucketListGoals", (req, res) => {
     // code to delete bucket list goal off list
     let existingBucketList = req.params.bucketListGoals;
     let deleteBucketListGoal = req.body.bucketListGoals;
@@ -71,7 +74,7 @@ app.delete("api/bucketList/:bucketListGoals", (req, res) => {
     res.status(200).send(bucketListTable);
 })
 
-app.delete("api/achevementList/:achievementListGoals", (req, res) => {
+app.delete("/api/achevementList/:achievementListGoals", (req, res) => {
     // code to remove achievement off list
     let existingBucketList = req.params.bucketListGoals;
     let deleteBucketListGoal = req.body.bucketListGoals;

@@ -1,7 +1,7 @@
-const { DATABASE_URL } = process.env.CONNECTION_STRING;
+const { CONNECTION_STRING } = process.env;
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize(DATABASE_URL, {
+const sequelize = new Sequelize(CONNECTION_STRING, {
     dialect: 'postgres',
     dialectOptions: {
         ssl: {

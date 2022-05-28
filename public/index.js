@@ -3,22 +3,30 @@ document.getElementById('submitBtn').onclick = function(event) {
     event.preventDefault()
     const addBucket = document.getElementById("addBucket")
     console.log(addBucket.value)
-    const goals = { DATABASE_URL: addBucket.value }
+    const goals = { bucketListGoals: addBucket.value }
     axios.post('http://localhost:4040/api/bucketList', goals).then(res => {
         console.log(res.data)
     })
 }
 
 // Get requests
-document.getElementById("bucket-list") = function() {
+const bucketList = document.getElementById("bucket-list")
+
+function getBucketList() {
     axios.get("http://localhost:4040/api/bucketList/")
         .then(function(response) {
             const data = response.data;
-            const listItems = document.createElement("ul");
-            data.appendChild(listItems);
-            document.body.append("bucket-list");
+            const lis = data.map(d => {
+                const li = document.createElement("li")
+                li.innerText = d.value
+                    // li.appendChild(button) //Where the buttons will go so they appear with each li
+                    // li.appendChild(document.createElementBy("button"))
+                    // li.appendChild(document.createElementBy("button"))
+                bucketList.appendChild(li);
+            });
         });
 };
+getBucketList()
 
 document.getElementById("achievement-list") = function() {
     axios.get("http://localhost:4040/api/achievementList/")
