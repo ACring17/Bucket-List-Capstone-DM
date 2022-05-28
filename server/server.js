@@ -1,4 +1,3 @@
-const PORT = 4040;
 require('dotenv').config();
 const express = require('express');
 
