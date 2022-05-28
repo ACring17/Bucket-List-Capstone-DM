@@ -6,7 +6,7 @@ async function createDatabaseSchema(req, res) {
     drop table if exists Bucket_List;
     create table Bucket_List (
       id integer primary key,
-      Value text,
+      value text,
       is_achieved boolean,
       user_id integer
     );
@@ -20,6 +20,4 @@ async function createDatabaseSchema(req, res) {
     }
 }
 
-module.exports = {
-    createDatabaseSchema,
-};
+module.exports = { createDatabaseSchema };

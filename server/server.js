@@ -10,14 +10,14 @@ app.use(express.json());
 
 // GET API methods
 app.get("/api/bucketList", (req, res) => {
-    const usersBucketList = //Where the bucket list items are stored in the DB
-        res.status(200).send(usersBucketList);
+    const usersBucketList = DATABASE_URL;
+    res.status(200).send(usersBucketList);
 
 });
 
 app.get("/api/achievementList", (req, res) => {
-    const usersAchievementList = //Where the achievement list items are stored in the DB
-        res.status(200).send(usersAchievementList);
+    const usersAchievementList = DATABASE_URL;
+    res.status(200).send(usersAchievementList);
 
 });
 
