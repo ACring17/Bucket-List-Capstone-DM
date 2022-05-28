@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const sequelize = require('./db');
 
 const app = express()
 
@@ -9,13 +10,13 @@ app.use(express.json());
 
 // GET API methods
 app.get("/api/bucketList", (req, res) => {
-    const usersBucketList = DATABASE_URL;
+    const usersBucketList = sequelize.query('select value from Bucket_List');
     res.status(200).send(usersBucketList);
 
 });
 
 app.get("/api/achievementList", (req, res) => {
-    const usersAchievementList = DATABASE_URL;
+    const usersAchievementList = sequelize.query('select is_achieved from Bucket_List'); //Need to find out why it doesnt like this query.
     res.status(200).send(usersAchievementList);
 
 });
@@ -29,7 +30,7 @@ app.post("api/bucketList", (req, res) => {
         res.status(400).send("Looks like you forgot to type in a goal. What would you like to acheieve?")
     } else {
         bucketListTable.push(req.body);
-        res.status(200).send(bucketListTable)
+        res.status(200).send(bucketListTable) //Do I need a function to add to db?
     }
 })
 
@@ -38,13 +39,13 @@ app.post("api/achievementList", (req, res) => {
     const achievementListGoals = req.body;
     bucketListTable.push(achievementListGoals);
     res.status(200).send(bucketListTable.achievementListGoals)
-        // Does this work as I intend it to?
+        // How do I get it to store the info in the DB?
 })
 
 // PUT API methods
 app.put("api/bucketList/:bucketListGoals", (req, res) => {
     // code to edit goals on bucket list
-    let existingBucketList = req.params.bucketListGoals;
+    let existingBucketList = req.params.bucketListGoals; //Need to change this so it goes to the DB
     let newBucketListGoal = req.body.bucketListGoals;
     bucketListTable.push(newBucketListGoal);
     bucketListTable.delete(existingBucketList);

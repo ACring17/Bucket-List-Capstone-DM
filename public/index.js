@@ -1,4 +1,4 @@
-// Post methods
+// Post method for bucket list
 document.getElementById('submitBtn').onclick = function(event) {
     event.preventDefault()
     const addBucket = document.getElementById("addBucket")
@@ -9,7 +9,7 @@ document.getElementById('submitBtn').onclick = function(event) {
     })
 }
 
-// Code to display lists-Get requests
+// Get requests
 document.getElementById("bucket-list") = function() {
     axios.get("http://localhost:4040/api/bucketList/")
         .then(function(response) {
@@ -30,12 +30,12 @@ document.getElementById("achievement-list") = function() {
         });
 };
 
-// Put methods - need to make adjustments so that these work. Basic structure for now
+// Put methods - Basic structure for now
 document.getElementById("edit").onclick = function() {
     axios.put("http://localhost:4040/api/bucketList/")
         .then(function(response) {
-            const data = response.data;
-            const listItems = document.createElement("ul");
+            const data = response.data; //How do I link to data base? sequalize?
+            const listItems = document.createElement("ul"); //Create li for the bucket list
             data.appendChild(listItems);
             document.body.append("bucket-list");
         });
