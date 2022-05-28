@@ -18,6 +18,10 @@
   },
   "homepage": "https://github.com/ACring17/Bucket-List-Capstone-DM#readme",
   "dependencies": {
-    "express": "^4.18.1"
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "pg": "^8.7.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.20.1"
   }
 }

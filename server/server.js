@@ -1,13 +1,20 @@
 const PORT = 4040;
-
-const express = require('express')
+require('dotenv').config();
+const express = require('express');
+const Sequelize = require('sequelize');
 
 const app = express()
+const sequelize = new Sequelize(process.env.CONNECTION_STRING, {
+    dialect: 'postgres',
+    dialectOptions: {
+        ssl: {
+            rejectUnauthorized: false
+        }
+    }
+})
 
-app.use(express.json())
+app.use(express.json());
 
-
-// bucketListTable = database
 
 // GET API methods
 app.get("/api/bucketList", (req, res) => {
@@ -81,6 +88,6 @@ app.delete("api/achevementList/:achievementListGoals", (req, res) => {
     res.status(200).send(bucketListTable);
 })
 
-app.listen(PORT, () => console.log(`Server running on ${PORT}`))
+app.listen(process.env.SERVER_PORT, () => console.log(`Server running on ${process.env.SERVER_PORT}`))
 
 // For id login look at backend video 1 at 1:45 mark
