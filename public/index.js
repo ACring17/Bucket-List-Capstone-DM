@@ -19,10 +19,20 @@ function getBucketList() {
             const lis = data.map(d => {
                 const li = document.createElement("li")
                 li.innerText = d.value
-                    // li.appendChild(button) //Where the buttons will go so they appear with each li
-                    // li.appendChild(document.createElementBy("button"))
-                    // li.appendChild(document.createElementBy("button"))
+                const edit = document.createElement("button")
+                edit.setAttribute("id", "edit")
+                edit.textContent = "Edit"
+                const deletebtn = document.createElement("button")
+                deletebtn.setAttribute("id", "deletebtn")
+                deletebtn.textContent = "Delete"
+                const achieved = document.createElement("button")
+                achieved.setAttribute("id", "achieved")
+                achieved.textContent = "Achieved"
+
                 bucketList.appendChild(li);
+                bucketList.appendChild(edit)
+                bucketList.appendChild(deletebtn)
+                bucketList.appendChild(achieved)
             });
         });
 };
