@@ -18,8 +18,7 @@ app.get("/api/bucketList", async(req, res) => {
 });
 
 app.get("/api/achievementList", async(req, res) => {
-    const usersAchievementList = await sequelize.query('select is_achieved from bucket_list'); //Need to find out why it doesnt like this query.
-
+    const usersAchievementList = await sequelize.query('select is_achieved from bucket_list');
     res.status(200).send(usersAchievementList);
 
 });
