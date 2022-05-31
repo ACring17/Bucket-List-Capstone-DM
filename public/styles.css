@@ -124,3 +124,12 @@ button:hover {
 #achieved:hover {
     background-color: #1b512d;
 }
+
+
+/* List Item styling */
+
+ul {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 18px;
+    font-weight: 200;
+}

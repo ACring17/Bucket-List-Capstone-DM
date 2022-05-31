@@ -9,7 +9,8 @@ const app = express()
 app.use(express.json());
 app.use(cors());
 app.get("/seed", createDatabaseSchema)
-    // GET API methods
+
+// GET API methods
 app.get("/api/bucketList", async(req, res) => {
     const [usersBucketList] = await sequelize.query('select value from bucket_list');
     console.log(usersBucketList)
@@ -18,7 +19,7 @@ app.get("/api/bucketList", async(req, res) => {
 });
 
 app.get("/api/achievementList", async(req, res) => {
-    const usersAchievementList = await sequelize.query('select is_achieved from bucket_list');
+    const [usersAchievementList] = await sequelize.query('select is_achieved from bucket_list');
     res.status(200).send(usersAchievementList);
 
 });
