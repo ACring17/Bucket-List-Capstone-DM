@@ -17,29 +17,28 @@ function getBucketList() {
         .then(function(response) {
             const data = response.data;
             const lis = data.map(d => {
-                const li = document.createElement("li")
-                li.innerText = d.value
-                const deletebtn = document.createElement("button")
-                deletebtn.setAttribute("id", "deletebtn")
-                deletebtn.textContent = "Delete"
-                const achieved = document.createElement("button")
-                achieved.setAttribute("id", "achieved")
-                achieved.textContent = ("Achieved")
+                    const li = document.createElement("li")
+                    li.innerText = d.value
+                    const deletebtn = document.createElement("button")
+                    deletebtn.setAttribute("id", "deletebtn")
+                    deletebtn.textContent = "Delete"
+                    const achieved = document.createElement("button")
+                    achieved.setAttribute("id", "achieved")
+                    achieved.textContent = ("Achieved")
 
-                bucketList.appendChild(li);
-                bucketList.appendChild(deletebtn)
-                bucketList.appendChild(achieved)
-            });
-            // Delete method -- For removing items off lists
-            document.getElementById('deleteBtn').onclick = function(event) {
+                    bucketList.appendChild(li);
+                    bucketList.appendChild(deletebtn)
+                    bucketList.appendChild(achieved)
+                })
+                // Delete method -- For removing items off lists
+            document.getElementById('deletebtn').onclick = function(event) {
                 event.preventDefault()
                 const deletebtn = document.getElementById("deletebtn")
-                console.log(deletebtn.value)
-                const goals = { bucketListGoals: deletebtn.value }
-                axios.delete('http://localhost:4040/api/bucketList', goals).then(res => {
+                axios.delete('http://localhost:4040/api/bucketList').then(res => {
                     console.log(res.data)
                 })
-            }
-        });
+            };
+        })
 };
+
 getBucketList()
