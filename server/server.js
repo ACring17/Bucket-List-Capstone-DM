@@ -20,6 +20,7 @@ app.get("/api/bucketList", async(req, res) => {
 
 app.get("/api/achievementList", async(req, res) => {
     const [usersAchievementList] = await sequelize.query('select is_achieved from bucket_list');
+    console.log(usersAchievementList)
     res.status(200).send(usersAchievementList);
 
 });
@@ -37,32 +38,15 @@ app.post("/api/bucketList", (req, res) => {
     }
 })
 
-app.post("/api/achievementList", (req, res) => {
+app.put("/api/achievementList/:id", (req, res) => {
     // Code to move from bucket list to acheivement list
+    const { id } = req.params;
     const achievementListGoals = req.body;
-    bucketListTable.push(achievementListGoals);
-    res.status(200).send(bucketListTable.achievementListGoals)
-        // How do I get it to store the info in the DB?
+    sequelize.query(`update into bucket_list (is_achieved, user_id) values (true, '${id})`);
+    res.status(200).send([]);
+    // How do I get it to change boolean in the DB?
 })
 
-// PUT API methods
-app.put("/api/bucketList/:bucketListGoals", (req, res) => {
-    // code to edit goals on bucket list
-    let existingBucketList = req.params.bucketListGoals; //Need to change this so it goes to the DB
-    let newBucketListGoal = req.body.bucketListGoals;
-    bucketListTable.push(newBucketListGoal);
-    bucketListTable.delete(existingBucketList);
-    res.status(200).send(bucketListTable); //
-})
-
-app.put("/api/achievementList/:achievementListGoals", (req, res) => {
-    // code to edit achievement list
-    let existingAchievementList = req.params.achievementListGoals;
-    let newAchievementListGoal = req.body.bucketListGoals;
-    bucketListTable.push(newAchievementListGoal);
-    bucketListTable.delete(existingAchievementList);
-    res.status(200).send(bucketListTable); //
-})
 
 // Delete API methods
 app.delete("/api/bucketList/:bucketListGoals", (req, res) => {
@@ -85,4 +69,22 @@ app.delete("/api/achevementList/:achievementListGoals", (req, res) => {
 
 app.listen(process.env.SERVER_PORT, () => console.log(`Server running on ${process.env.SERVER_PORT}`))
 
+// // PUT API methods
+// app.put("/api/bucketList/:bucketListGoals", (req, res) => {
+//     // code to edit goals on bucket list
+//     let existingBucketList = req.params.bucketListGoals; //Need to change this so it goes to the DB
+//     let newBucketListGoal = req.body.bucketListGoals;
+//     bucketListTable.push(newBucketListGoal);
+//     bucketListTable.delete(existingBucketList);
+//     res.status(200).send(bucketListTable); //
+// })
+
+// app.put("/api/achievementList/:achievementListGoals", (req, res) => {
+//     // code to edit achievement list
+//     let existingAchievementList = req.params.achievementListGoals;
+//     let newAchievementListGoal = req.body.bucketListGoals;
+//     bucketListTable.push(newAchievementListGoal);
+//     bucketListTable.delete(existingAchievementList);
+//     res.status(200).send(bucketListTable); //
+// })
 // For id login look at backend video 1 at 1:45 mark
