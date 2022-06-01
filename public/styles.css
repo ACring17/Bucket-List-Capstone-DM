@@ -106,7 +106,7 @@ button {
     width: 100px;
     height: 50px;
     font-family: 'Libre Franklin', sans-serif;
-    font-weight: 700;
+    font-weight: 600;
     border: solid 1px black;
     background-color: white;
 }
@@ -114,6 +114,12 @@ button {
 #achieved {
     background-color: #9fc490;
     border: solid 1px black;
+    margin: auto;
+    align-items: center;
+}
+
+#deletebtn {
+    /* margin: 10ox 0 10px 50px; */
 }
 
 button:hover {
@@ -131,5 +137,14 @@ button:hover {
 ul {
     font-family: 'Libre Franklin', sans-serif;
     font-size: 18px;
-    font-weight: 200;
+    font-weight: 500;
+    list-style: none;
+    font-size: 20px;
+    margin: 25px 0 10px 100px;
+}
+
+li {
+    margin: 25px 0 20px 0px;
+    font-size: 30px;
+    text-shadow: 10px;
 }
