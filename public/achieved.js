@@ -2,26 +2,25 @@ const achievementList = document.getElementById("achievement-list")
 console.log(achievementList)
 
 function getAchievementList() {
-    axios.get("http://localhost:4040/api/bucketList/")
+    axios.get("http://localhost:4040/api/achievementList/")
         .then(function(response) {
             const data = response.data;
+            achievementList.innerHTML = ''
             const lis = data.map(d => {
                 const li = document.createElement("li")
                 li.innerText = d.value
                 const deletebtn = document.createElement("button")
                 deletebtn.setAttribute("id", "deletebtn")
                 deletebtn.textContent = "Delete"
-
+                deletebtn.bucketListID = d.id;
                 achievementList.appendChild(li);
                 achievementList.appendChild(deletebtn)
-                    // Delete method -- For removing items off lists
-                document.getElementById('deleteBtn').onclick = function(event) {
+                    // Delete method -- For removing items off list
+                document.getElementById('deletebtn').onclick = function(event) {
                     event.preventDefault()
-                    const deletebtn = document.getElementById("deletebtn")
-                    console.log(deletebtn.value)
-                    const goals = { bucketListGoals: deletebtn.value }
-                    axios.delete('http://localhost:4040/api/bucketList', goals).then(res => {
+                    axios.delete(`http://localhost:4040/api/achievementList/${event.target.bucketListID}`).then(res => {
                         console.log(res.data)
+                        getAchievementList();
                     })
                 }
             });
