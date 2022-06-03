@@ -19,7 +19,7 @@ app.get("/api/bucketList", async(req, res) => {
 });
 
 app.get("/api/achievementList", async(req, res) => {
-    const [usersAchievementList] = await sequelize.query('select is_achieved from bucket_list');
+    const [usersAchievementList] = await sequelize.query('select is_achieved from bucket_list'); //Think about sequelize query to get values that have the true boolean. 
     console.log(usersAchievementList)
     res.status(200).send(usersAchievementList);
 
@@ -38,33 +38,38 @@ app.post("/api/bucketList", (req, res) => {
     }
 })
 
-app.put("/api/achievementList/:id", (req, res) => {
+app.put("/api/bucketList/:id", (req, res) => {
     // Code to move from bucket list to acheivement list
-    const { id } = req.params;
-    const achievementListGoals = req.body;
-    sequelize.query(`update into bucket_list (is_achieved, user_id) values (true, '${id})`);
-    res.status(200).send([]);
-    // How do I get it to change boolean in the DB?
+    const { id } = req.params.id;
+    const achievementListGoals = req.body.isAchieved;
+    const movedToAchieve = sequelize.query(`update into bucket_list (is_achieved, user_id) values (true, '${id})`);
+    if (achievementListGoals) {
+        movedToAchieve
+    }
+    res.status(200).send([]); //trying to send updated list.
+
 })
 
 
 // Delete API methods
-app.delete("/api/bucketList/:bucketListGoals", (req, res) => {
+app.delete("/api/bucketList/:id", async(req, res) => {
     // code to delete bucket list goal off list
-    let existingBucketList = req.params.bucketListGoals;
-    let deleteBucketListGoal = req.body.bucketListGoals;
-    bucketListTable.splice(deleteBucketListGoal, 1);
-    bucketListTable.delete(existingBucketList); //Seems redundant
-    res.status(200).send(bucketListTable);
+    const { deletebtn } = req.body.deletebtn;
+    const deleteFromList = sequelize.query(`delete from bucket_list (value, is_achieved)`);
+    if (deletebtn) {
+        deleteFromList
+    };
+    res.status(200).send([]); //trying to send updated list values.
 })
 
 app.delete("/api/achevementList/:achievementListGoals", (req, res) => {
     // code to remove achievement off list
-    let existingBucketList = req.params.bucketListGoals;
-    let deleteBucketListGoal = req.body.bucketListGoals;
-    bucketListTable.splice(deleteBucketListGoal, 1);
-    bucketListTable.delete(existingBucketList); //Seems redundant
-    res.status(200).send(bucketListTable);
+    const { deletebtn } = req.body;
+    const deleteFromList = sequelize.query(`delete from bucket_list (value, is_achieved)`);
+    if (deletebtn) {
+        deleteFromList
+    };
+    res.status(200).send([]); //trying to send updated list values.
 })
 
 app.listen(process.env.SERVER_PORT, () => console.log(`Server running on ${process.env.SERVER_PORT}`))

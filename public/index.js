@@ -30,10 +30,19 @@ function getBucketList() {
                     bucketList.appendChild(deletebtn)
                     bucketList.appendChild(achieved)
                 })
-                // Delete method -- For removing items off lists
+                // Put Method -- Moving goal from bucket list to Achieved list
+            document.getElementById('achieved').onclick = function(event) {
+                    event.preventDefault()
+                    const achieved = document.getElementById("achieved")
+                    const goals = { bucketList: achieved.value }
+                    axios.put('http://localhost:4040/api/bucketList', goals).then(res => {
+                        console.log(res.data)
+                    })
+                }
+                // Delete method -- For removing items off lists  ---Need to make sure the end points are correct. Right function?
             document.getElementById('deletebtn').onclick = function(event) {
                 event.preventDefault()
-                const deletebtn = document.getElementById("deletebtn")
+                    // const deletebtn = document.getElementById("deletebtn")
                 axios.delete('http://localhost:4040/api/bucketList').then(res => {
                     console.log(res.data)
                 })
