@@ -118,10 +118,6 @@ button {
     align-items: center;
 }
 
-#deletebtn {
-    /* margin: 10ox 0 10px 50px; */
-}
-
 button:hover {
     background-color: black;
     color: white;
