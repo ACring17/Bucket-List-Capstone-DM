@@ -37,7 +37,7 @@ app.post("/api/bucketList", (req, res) => {
         res.status(400).send("Looks like you forgot to type in a goal. What would you like to acheieve?")
     } else {
         const usersAchievementList = sequelize.query(`insert into bucket_list (is_achieved, value, user_id) values (false, '${bucketListGoals}', 1)`);
-        res.status(200).send([]) //Do I need a function to add to db?
+        res.status(200).send([]) 
     }
 })
 
@@ -46,7 +46,7 @@ app.put("/api/bucketList/:id", async(req, res) => {
     // Code to move from bucket list to acheivement list
     const { id } = req.params;
     const movedToAchieve = await sequelize.query(`update bucket_list set is_achieved = true where id = ${id}`);
-    res.status(200).send([]); //trying to send updated list.
+    res.status(200).send([]); 
 
 })
 
@@ -57,14 +57,14 @@ app.delete("/api/bucketList/:id", async(req, res) => {
     const { id } = req.params;
     const deleteFromList = await sequelize.query(`delete from bucket_list where id = ${id}`);
     console.log(deleteFromList, 'hit')
-    res.status(200).send([]); //trying to send updated list values.
+    res.status(200).send([]); 
 })
 
 app.delete("/api/achievementList/:id", async(req, res) => {
     // code to remove achievement off list
     const { id } = req.params;
     const deleteFromList = await sequelize.query(`delete from bucket_list where id = ${id}`);
-    res.status(200).send([]); //trying to send updated list values.
+    res.status(200).send([]); 
 })
 
 app.listen(process.env.SERVER_PORT, () => console.log(`Server running on ${process.env.SERVER_PORT}`))
